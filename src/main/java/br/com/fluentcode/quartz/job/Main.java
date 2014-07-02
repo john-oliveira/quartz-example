@@ -24,12 +24,10 @@ public class Main {
 			        .withIdentity("job1", "group1")
 			        .build();
 
-			// Trigger the job to run now, and then repeat every 3 seconds
+			// Cron expression "0/5 * * * * ?" means trigger the job to run on the second 0 and repeat every 5 seconds
 		    Trigger trigger = newTrigger()
 		        .withIdentity("trigger1", "group1")
-		        .startNow()
-		        // Cron expression "0/3 * * * * ?" means "every 3 seconds"
-		        .withSchedule(cronSchedule("0/3 * * * * ?"))            
+		        .withSchedule(cronSchedule("0/5 * * * * ?"))            
 		        .build();
 		    
 		    // Tell quartz to schedule the job using our trigger
